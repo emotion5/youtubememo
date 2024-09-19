@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube 링크 메모</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        form { margin-bottom: 20px; }
+        input[type="text"] { width: 70%; padding: 5px; }
+        input[type="submit"] { padding: 5px 10px; }
+        .video-list { list-style-type: none; padding: 0; }
+        .video-item { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <h1>YouTube 링크 메모</h1>
+    
+    <form action="/add" method="POST">
+        <input type="text" name="url" placeholder="YouTube URL 입력" required>
+        <input type="text" name="title" placeholder="제목 입력" required>
+        <input type="submit" value="추가">
+    </form>
+
+    <ul class="video-list">
+        <% videos.forEach(video => { %>
+            <li class="video-item">
+                <a href="<%= video.url %>" target="_blank"><%= video.title %></a>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>
